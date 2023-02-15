@@ -57,28 +57,6 @@ export class HighestBidIncreased__Params {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get price(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
-  }
-}
-
-export class ItemBought extends ethereum.Event {
-  get params(): ItemBought__Params {
-    return new ItemBought__Params(this);
-  }
-}
-
-export class ItemBought__Params {
-  _event: ItemBought;
-
-  constructor(event: ItemBought) {
-    this._event = event;
-  }
-
-  get buyer(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
   get nftAddress(): Address {
     return this._event.parameters[1].value.toAddress();
   }
@@ -127,24 +105,20 @@ export class ItemListed__Params {
     this._event = event;
   }
 
-  get seller(): Address {
+  get nftAddress(): Address {
     return this._event.parameters[0].value.toAddress();
   }
 
-  get nftAddress(): Address {
-    return this._event.parameters[1].value.toAddress();
-  }
-
   get tokenId(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
+    return this._event.parameters[1].value.toBigInt();
   }
 
   get price(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
+    return this._event.parameters[2].value.toBigInt();
   }
 
   get endTime(): BigInt {
-    return this._event.parameters[4].value.toBigInt();
+    return this._event.parameters[3].value.toBigInt();
   }
 }
 

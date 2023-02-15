@@ -3,7 +3,6 @@ import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
 import {
   AuctionEnded,
   HighestBidIncreased,
-  ItemBought,
   ItemCanceled,
   ItemListed,
   OwnershipTransferred
@@ -43,6 +42,8 @@ export function createAuctionEndedEvent(
 
 export function createHighestBidIncreasedEvent(
   bidder: Address,
+  nftAddress: Address,
+  tokenId: BigInt,
   price: BigInt
 ): HighestBidIncreased {
   let highestBidIncreasedEvent = changetype<HighestBidIncreased>(newMockEvent())
@@ -53,42 +54,22 @@ export function createHighestBidIncreasedEvent(
     new ethereum.EventParam("bidder", ethereum.Value.fromAddress(bidder))
   )
   highestBidIncreasedEvent.parameters.push(
-    new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
-  )
-
-  return highestBidIncreasedEvent
-}
-
-export function createItemBoughtEvent(
-  buyer: Address,
-  nftAddress: Address,
-  tokenId: BigInt,
-  price: BigInt
-): ItemBought {
-  let itemBoughtEvent = changetype<ItemBought>(newMockEvent())
-
-  itemBoughtEvent.parameters = new Array()
-
-  itemBoughtEvent.parameters.push(
-    new ethereum.EventParam("buyer", ethereum.Value.fromAddress(buyer))
-  )
-  itemBoughtEvent.parameters.push(
     new ethereum.EventParam(
       "nftAddress",
       ethereum.Value.fromAddress(nftAddress)
     )
   )
-  itemBoughtEvent.parameters.push(
+  highestBidIncreasedEvent.parameters.push(
     new ethereum.EventParam(
       "tokenId",
       ethereum.Value.fromUnsignedBigInt(tokenId)
     )
   )
-  itemBoughtEvent.parameters.push(
+  highestBidIncreasedEvent.parameters.push(
     new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
   )
 
-  return itemBoughtEvent
+  return highestBidIncreasedEvent
 }
 
 export function createItemCanceledEvent(
@@ -116,7 +97,6 @@ export function createItemCanceledEvent(
 }
 
 export function createItemListedEvent(
-  seller: Address,
   nftAddress: Address,
   tokenId: BigInt,
   price: BigInt,
@@ -126,9 +106,6 @@ export function createItemListedEvent(
 
   itemListedEvent.parameters = new Array()
 
-  itemListedEvent.parameters.push(
-    new ethereum.EventParam("seller", ethereum.Value.fromAddress(seller))
-  )
   itemListedEvent.parameters.push(
     new ethereum.EventParam(
       "nftAddress",
