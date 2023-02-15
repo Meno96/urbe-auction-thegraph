@@ -119,7 +119,8 @@ export function createItemListedEvent(
   seller: Address,
   nftAddress: Address,
   tokenId: BigInt,
-  price: BigInt
+  price: BigInt,
+  endTime: BigInt
 ): ItemListed {
   let itemListedEvent = changetype<ItemListed>(newMockEvent())
 
@@ -142,6 +143,12 @@ export function createItemListedEvent(
   )
   itemListedEvent.parameters.push(
     new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
+  )
+  itemListedEvent.parameters.push(
+    new ethereum.EventParam(
+      "endTime",
+      ethereum.Value.fromUnsignedBigInt(endTime)
+    )
   )
 
   return itemListedEvent

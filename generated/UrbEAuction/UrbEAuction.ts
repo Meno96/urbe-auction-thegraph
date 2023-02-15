@@ -142,6 +142,10 @@ export class ItemListed__Params {
   get price(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
+
+  get endTime(): BigInt {
+    return this._event.parameters[4].value.toBigInt();
+  }
 }
 
 export class OwnershipTransferred extends ethereum.Event {

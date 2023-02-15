@@ -85,6 +85,7 @@ export function handleItemListed(event: ItemListedEvent): void {
   entity.nftAddress = event.params.nftAddress
   entity.tokenId = event.params.tokenId
   entity.price = event.params.price
+  entity.endTime = event.params.endTime
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp

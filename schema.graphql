@@ -1,59 +1,35 @@
-type AuctionEnded @entity(immutable: true) {
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes! # address
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt!
+  price: BigInt
+}
+
+type AuctionEnded @entity {
   id: Bytes!
   winner: Bytes! # address
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
   price: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
 }
 
-type HighestBidIncreased @entity(immutable: true) {
+type HighestBidIncreased @entity {
   id: Bytes!
   bidder: Bytes! # address
   price: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
 }
 
-type ItemBought @entity(immutable: true) {
-  id: Bytes!
-  buyer: Bytes! # address
-  nftAddress: Bytes! # address
-  tokenId: BigInt! # uint256
-  price: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type ItemCanceled @entity(immutable: true) {
+type ItemCanceled @entity {
   id: Bytes!
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
 }
 
-type ItemListed @entity(immutable: true) {
+type ItemListed @entity {
   id: Bytes!
-  seller: Bytes! # address
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
-  price: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type OwnershipTransferred @entity(immutable: true) {
-  id: Bytes!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+  endTime: BigInt! # uint256
 }

@@ -432,6 +432,15 @@ export class ItemListed extends Entity {
     this.set("price", Value.fromBigInt(value));
   }
 
+  get endTime(): BigInt {
+    let value = this.get("endTime");
+    return value!.toBigInt();
+  }
+
+  set endTime(value: BigInt) {
+    this.set("endTime", Value.fromBigInt(value));
+  }
+
   get blockNumber(): BigInt {
     let value = this.get("blockNumber");
     return value!.toBigInt();
