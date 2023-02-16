@@ -5,6 +5,7 @@ type ActiveItem @entity {
   nftAddress: Bytes! # address
   tokenId: BigInt!
   price: BigInt
+  startTime: BigInt! # uint256
   endTime: BigInt! # uint256
 }
 
@@ -36,6 +37,7 @@ type ItemListed @entity {
   tokenId: BigInt! # uint256
   price: BigInt
   endTime: BigInt! # uint256
+  startTime: BigInt! # uint256
 }
 
 type OwnershipTransferred @entity(immutable: true) {

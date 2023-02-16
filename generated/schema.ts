@@ -95,6 +95,15 @@ export class ActiveItem extends Entity {
     }
   }
 
+  get startTime(): BigInt {
+    let value = this.get("startTime");
+    return value!.toBigInt();
+  }
+
+  set startTime(value: BigInt) {
+    this.set("startTime", Value.fromBigInt(value));
+  }
+
   get endTime(): BigInt {
     let value = this.get("endTime");
     return value!.toBigInt();
@@ -382,6 +391,15 @@ export class ItemListed extends Entity {
 
   set endTime(value: BigInt) {
     this.set("endTime", Value.fromBigInt(value));
+  }
+
+  get startTime(): BigInt {
+    let value = this.get("startTime");
+    return value!.toBigInt();
+  }
+
+  set startTime(value: BigInt) {
+    this.set("startTime", Value.fromBigInt(value));
   }
 }
 

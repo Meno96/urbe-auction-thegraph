@@ -46,6 +46,9 @@ export function handleItemListed(event: ItemListedEvent): void {
   itemListed.endTime = event.params.endTime;
   activeItem.endTime = event.params.endTime;
 
+  itemListed.startTime = event.params.startTime;
+  activeItem.startTime = event.params.startTime;
+
   activeItem.buyer = Address.fromString(
     "0x0000000000000000000000000000000000000000"
   );

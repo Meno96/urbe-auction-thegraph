@@ -120,6 +120,10 @@ export class ItemListed__Params {
   get endTime(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
+
+  get startTime(): BigInt {
+    return this._event.parameters[4].value.toBigInt();
+  }
 }
 
 export class OwnershipTransferred extends ethereum.Event {
@@ -149,12 +153,20 @@ export class UrbEAuction__getListingResultValue0Struct extends ethereum.Tuple {
     return this[0].toBigInt();
   }
 
-  get endTime(): BigInt {
+  get startTime(): BigInt {
     return this[1].toBigInt();
   }
 
+  get endTime(): BigInt {
+    return this[2].toBigInt();
+  }
+
   get isListed(): boolean {
-    return this[2].toBoolean();
+    return this[3].toBoolean();
+  }
+
+  get highestBidder(): Address {
+    return this[4].toAddress();
   }
 }
 
@@ -163,22 +175,14 @@ export class UrbEAuction extends ethereum.SmartContract {
     return new UrbEAuction("UrbEAuction", address);
   }
 
-  getHighestBidder(): Address {
-    let result = super.call(
-      "getHighestBidder",
-      "getHighestBidder():(address)",
-      []
-    );
+  getDeployer(): Address {
+    let result = super.call("getDeployer", "getDeployer():(address)", []);
 
     return result[0].toAddress();
   }
 
-  try_getHighestBidder(): ethereum.CallResult<Address> {
-    let result = super.tryCall(
-      "getHighestBidder",
-      "getHighestBidder():(address)",
-      []
-    );
+  try_getDeployer(): ethereum.CallResult<Address> {
+    let result = super.tryCall("getDeployer", "getDeployer():(address)", []);
     if (result.reverted) {
       return new ethereum.CallResult();
     }
@@ -192,7 +196,7 @@ export class UrbEAuction extends ethereum.SmartContract {
   ): UrbEAuction__getListingResultValue0Struct {
     let result = super.call(
       "getListing",
-      "getListing(address,uint256):((uint256,uint256,bool))",
+      "getListing(address,uint256):((uint256,uint256,uint256,bool,address))",
       [
         ethereum.Value.fromAddress(nftAddress),
         ethereum.Value.fromUnsignedBigInt(tokenId)
@@ -210,7 +214,7 @@ export class UrbEAuction extends ethereum.SmartContract {
   ): ethereum.CallResult<UrbEAuction__getListingResultValue0Struct> {
     let result = super.tryCall(
       "getListing",
-      "getListing(address,uint256):((uint256,uint256,bool))",
+      "getListing(address,uint256):((uint256,uint256,uint256,bool,address))",
       [
         ethereum.Value.fromAddress(nftAddress),
         ethereum.Value.fromUnsignedBigInt(tokenId)
@@ -254,29 +258,6 @@ export class UrbEAuction extends ethereum.SmartContract {
 
   try_owner(): ethereum.CallResult<Address> {
     let result = super.tryCall("owner", "owner():(address)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toAddress());
-  }
-
-  s_highestBidder(): Address {
-    let result = super.call(
-      "s_highestBidder",
-      "s_highestBidder():(address)",
-      []
-    );
-
-    return result[0].toAddress();
-  }
-
-  try_s_highestBidder(): ethereum.CallResult<Address> {
-    let result = super.tryCall(
-      "s_highestBidder",
-      "s_highestBidder():(address)",
-      []
-    );
     if (result.reverted) {
       return new ethereum.CallResult();
     }

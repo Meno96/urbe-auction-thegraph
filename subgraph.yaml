@@ -6,9 +6,9 @@ dataSources:
     name: UrbEAuction
     network: goerli
     source:
-      address: "0x6DFC28752556b828C46165EdFC3311C7D8cBE0A9"
+      address: "0x00cd10ab78E207703Cb417f574D1260f5d5fD4DB"
       abi: UrbEAuction
-      startBlock: 8501500
+      startBlock: 8502625
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -29,7 +29,7 @@ dataSources:
           handler: handleHighestBidIncreased
         - event: ItemCanceled(indexed address,indexed uint256)
           handler: handleItemCanceled
-        - event: ItemListed(indexed address,indexed uint256,uint256,uint256)
+        - event: ItemListed(indexed address,indexed uint256,uint256,uint256,uint256)
           handler: handleItemListed
         - event: OwnershipTransferred(indexed address,indexed address)
           handler: handleOwnershipTransferred
