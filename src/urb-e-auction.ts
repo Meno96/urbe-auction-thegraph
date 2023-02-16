@@ -49,6 +49,9 @@ export function handleItemListed(event: ItemListedEvent): void {
   activeItem.buyer = Address.fromString(
     "0x0000000000000000000000000000000000000000"
   );
+  activeItem.winner = Address.fromString(
+    "0x0000000000000000000000000000000000000000"
+  );
 
   itemListed.save();
   activeItem.save();
@@ -71,6 +74,9 @@ export function handleItemCanceled(event: ItemCanceledEvent): void {
   activeItem!.buyer = Address.fromString(
     "0x000000000000000000000000000000000000dEaD"
   );
+  activeItem!.winner = Address.fromString(
+    "0x000000000000000000000000000000000000dEaD"
+  );
 
   itemCanceled.save();
   activeItem!.save();
@@ -91,7 +97,7 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
   auctionEnded.winner = event.params.winner;
   auctionEnded.nftAddress = event.params.nftAddress;
   auctionEnded.tokenId = event.params.tokenId;
-  activeItem!.buyer = event.params.winner;
+  activeItem!.winner = event.params.winner;
 
   auctionEnded.save();
   activeItem!.save();
