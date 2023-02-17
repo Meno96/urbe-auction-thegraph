@@ -6,9 +6,9 @@ dataSources:
     name: UrbEAuction
     network: goerli
     source:
-      address: "0xB4ABBdA9Da4EeA3C22d48698c682d860f8da0304"
+      address: "0x38D81057D46eEef71C9ad36dcEFFd44dDAb5D3be"
       abi: UrbEAuction
-      startBlock: 8506901
+      startBlock: 8506981
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
