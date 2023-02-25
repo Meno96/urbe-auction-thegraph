@@ -1,0 +1,50 @@
+type ActiveItem @entity {
+  id: ID!
+  buyer: Bytes! # address
+  winner: Bytes! # address
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt!
+  price: BigInt
+  startTime: BigInt! # uint256
+  endTime: BigInt! # uint256
+}
+
+type AuctionEnded @entity {
+  id: ID!
+  winner: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt # uint256
+}
+
+type HighestBidIncreased @entity {
+  id: ID!
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+  bidder: Bytes! # address
+  price: BigInt # uint256
+}
+
+type ItemCanceled @entity {
+  id: ID!
+  seller: Bytes! # address
+  nftAddress: Bytes! # address
+  tokenId: BigInt! # uint256
+}
+
+type ItemListed @entity {
+  id: ID!
+  nftAddress: Bytes! # address
+  seller: Bytes! # address
+  tokenId: BigInt! # uint256
+  price: BigInt
+  endTime: BigInt! # uint256
+  startTime: BigInt! # uint256
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+}

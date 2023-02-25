@@ -1,0 +1,18 @@
+{
+  "name": "urbe-auction",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ urbe-auction",
+    "create-local": "graph create --node http://localhost:8020/ urbe-auction",
+    "remove-local": "graph remove --node http://localhost:8020/ urbe-auction",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 urbe-auction",
+    "test": "graph test"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.37.7",
+    "@graphprotocol/graph-ts": "0.29.1"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}

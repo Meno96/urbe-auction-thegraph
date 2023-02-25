@@ -1,0 +1,33 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: UrbEAuction
+    network: goerli
+    source:
+      address: "0xA5Ce971edcd52664768072BF63dFeC8C8ad9A3cF"
+      abi: UrbEAuction
+      startBlock: 8555824
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AuctionEnded
+        - HighestBidIncreased
+        - ItemCanceled
+        - ItemListed
+      abis:
+        - name: UrbEAuction
+          file: ./abis/UrbEAuction.json
+      eventHandlers:
+        - event: AuctionEnded(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleAuctionEnded
+        - event: HighestBidIncreased(indexed address,indexed address,indexed uint256,uint256)
+          handler: handleHighestBidIncreased
+        - event: ItemCanceled(indexed address,indexed address,indexed uint256)
+          handler: handleItemCanceled
+        - event: ItemListed(indexed address,indexed address,indexed uint256,uint256,uint256,uint256)
+          handler: handleItemListed
+      file: ./src/urb-e-auction.ts
