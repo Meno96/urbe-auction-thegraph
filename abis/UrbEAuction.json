@@ -64,6 +64,12 @@
         "internalType": "uint256",
         "name": "price",
         "type": "uint256"
+      },
+      {
+        "indexed": false,
+        "internalType": "bytes",
+        "name": "auctionJson",
+        "type": "bytes"
       }
     ],
     "name": "AuctionEnded",
@@ -171,7 +177,8 @@
   {
     "inputs": [
       { "internalType": "address", "name": "nftAddress", "type": "address" },
-      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
+      { "internalType": "bytes", "name": "auctionJson", "type": "bytes" }
     ],
     "name": "auctionEnd",
     "outputs": [],

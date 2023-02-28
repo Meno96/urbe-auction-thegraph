@@ -38,6 +38,10 @@ export class AuctionEnded__Params {
   get price(): BigInt {
     return this._event.parameters[3].value.toBigInt();
   }
+
+  get auctionJson(): Bytes {
+    return this._event.parameters[4].value.toBytes();
+  }
 }
 
 export class HighestBidIncreased extends ethereum.Event {
@@ -290,6 +294,10 @@ export class AuctionEndCall__Inputs {
 
   get tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
+  }
+
+  get auctionJson(): Bytes {
+    return this._call.inputValues[2].value.toBytes();
   }
 }
 

@@ -87,21 +87,13 @@ export class ActiveItem extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
-  get price(): BigInt | null {
+  get price(): BigInt {
     let value = this.get("price");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
+    return value!.toBigInt();
   }
 
-  set price(value: BigInt | null) {
-    if (!value) {
-      this.unset("price");
-    } else {
-      this.set("price", Value.fromBigInt(<BigInt>value));
-    }
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
   }
 
   get startTime(): BigInt {
@@ -181,21 +173,22 @@ export class AuctionEnded extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
-  get price(): BigInt | null {
+  get price(): BigInt {
     let value = this.get("price");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
+    return value!.toBigInt();
   }
 
-  set price(value: BigInt | null) {
-    if (!value) {
-      this.unset("price");
-    } else {
-      this.set("price", Value.fromBigInt(<BigInt>value));
-    }
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
+  }
+
+  get auctionJson(): Bytes {
+    let value = this.get("auctionJson");
+    return value!.toBytes();
+  }
+
+  set auctionJson(value: Bytes) {
+    this.set("auctionJson", Value.fromBytes(value));
   }
 }
 
@@ -259,21 +252,13 @@ export class HighestBidIncreased extends Entity {
     this.set("bidder", Value.fromBytes(value));
   }
 
-  get price(): BigInt | null {
+  get price(): BigInt {
     let value = this.get("price");
-    if (!value || value.kind == ValueKind.NULL) {
-      return null;
-    } else {
-      return value.toBigInt();
-    }
+    return value!.toBigInt();
   }
 
-  set price(value: BigInt | null) {
-    if (!value) {
-      this.unset("price");
-    } else {
-      this.set("price", Value.fromBigInt(<BigInt>value));
-    }
+  set price(value: BigInt) {
+    this.set("price", Value.fromBigInt(value));
   }
 }
 

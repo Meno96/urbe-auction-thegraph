@@ -6,9 +6,9 @@ dataSources:
     name: UrbEAuction
     network: goerli
     source:
-      address: "0xA5Ce971edcd52664768072BF63dFeC8C8ad9A3cF"
+      address: "0xdDfdac8eC08968B44fAF27054C366528EF601E61"
       abi: UrbEAuction
-      startBlock: 8555824
+      startBlock: 8569247
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -22,7 +22,7 @@ dataSources:
         - name: UrbEAuction
           file: ./abis/UrbEAuction.json
       eventHandlers:
-        - event: AuctionEnded(indexed address,indexed address,indexed uint256,uint256)
+        - event: AuctionEnded(indexed address,indexed address,indexed uint256,uint256,bytes)
           handler: handleAuctionEnded
         - event: HighestBidIncreased(indexed address,indexed address,indexed uint256,uint256)
           handler: handleHighestBidIncreased

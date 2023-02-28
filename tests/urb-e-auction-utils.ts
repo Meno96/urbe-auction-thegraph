@@ -1,5 +1,5 @@
 import { newMockEvent } from "matchstick-as"
-import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
+import { ethereum, Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
 import {
   AuctionEnded,
   HighestBidIncreased,
@@ -11,7 +11,8 @@ export function createAuctionEndedEvent(
   winner: Address,
   nftAddress: Address,
   tokenId: BigInt,
-  price: BigInt
+  price: BigInt,
+  auctionJson: Bytes
 ): AuctionEnded {
   let auctionEndedEvent = changetype<AuctionEnded>(newMockEvent())
 
@@ -34,6 +35,12 @@ export function createAuctionEndedEvent(
   )
   auctionEndedEvent.parameters.push(
     new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
+  )
+  auctionEndedEvent.parameters.push(
+    new ethereum.EventParam(
+      "auctionJson",
+      ethereum.Value.fromBytes(auctionJson)
+    )
   )
 
   return auctionEndedEvent
