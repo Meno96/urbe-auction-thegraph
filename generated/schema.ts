@@ -60,6 +60,7 @@ export class ActiveItem extends Entity {
     this.set("winner", Value.fromBytes(value));
   }
 
+<<<<<<< HEAD
   get seller(): Bytes {
     let value = this.get("seller");
     return value!.toBytes();
@@ -69,6 +70,8 @@ export class ActiveItem extends Entity {
     this.set("seller", Value.fromBytes(value));
   }
 
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   get nftAddress(): Bytes {
     let value = this.get("nftAddress");
     return value!.toBytes();
@@ -87,6 +90,7 @@ export class ActiveItem extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
+<<<<<<< HEAD
   get price(): BigInt {
     let value = this.get("price");
     return value!.toBigInt();
@@ -94,6 +98,23 @@ export class ActiveItem extends Entity {
 
   set price(value: BigInt) {
     this.set("price", Value.fromBigInt(value));
+=======
+  get price(): BigInt | null {
+    let value = this.get("price");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set price(value: BigInt | null) {
+    if (!value) {
+      this.unset("price");
+    } else {
+      this.set("price", Value.fromBigInt(<BigInt>value));
+    }
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   }
 
   get startTime(): BigInt {
@@ -173,6 +194,7 @@ export class AuctionEnded extends Entity {
     this.set("tokenId", Value.fromBigInt(value));
   }
 
+<<<<<<< HEAD
   get price(): BigInt {
     let value = this.get("price");
     return value!.toBigInt();
@@ -189,6 +211,23 @@ export class AuctionEnded extends Entity {
 
   set auctionJson(value: Bytes) {
     this.set("auctionJson", Value.fromBytes(value));
+=======
+  get price(): BigInt | null {
+    let value = this.get("price");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set price(value: BigInt | null) {
+    if (!value) {
+      this.unset("price");
+    } else {
+      this.set("price", Value.fromBigInt(<BigInt>value));
+    }
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   }
 }
 
@@ -252,6 +291,7 @@ export class HighestBidIncreased extends Entity {
     this.set("bidder", Value.fromBytes(value));
   }
 
+<<<<<<< HEAD
   get price(): BigInt {
     let value = this.get("price");
     return value!.toBigInt();
@@ -259,6 +299,23 @@ export class HighestBidIncreased extends Entity {
 
   set price(value: BigInt) {
     this.set("price", Value.fromBigInt(value));
+=======
+  get price(): BigInt | null {
+    let value = this.get("price");
+    if (!value || value.kind == ValueKind.NULL) {
+      return null;
+    } else {
+      return value.toBigInt();
+    }
+  }
+
+  set price(value: BigInt | null) {
+    if (!value) {
+      this.unset("price");
+    } else {
+      this.set("price", Value.fromBigInt(<BigInt>value));
+    }
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   }
 }
 
@@ -293,6 +350,7 @@ export class ItemCanceled extends Entity {
     this.set("id", Value.fromString(value));
   }
 
+<<<<<<< HEAD
   get seller(): Bytes {
     let value = this.get("seller");
     return value!.toBytes();
@@ -302,6 +360,8 @@ export class ItemCanceled extends Entity {
     this.set("seller", Value.fromBytes(value));
   }
 
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   get nftAddress(): Bytes {
     let value = this.get("nftAddress");
     return value!.toBytes();
@@ -361,6 +421,7 @@ export class ItemListed extends Entity {
     this.set("nftAddress", Value.fromBytes(value));
   }
 
+<<<<<<< HEAD
   get seller(): Bytes {
     let value = this.get("seller");
     return value!.toBytes();
@@ -370,6 +431,8 @@ export class ItemListed extends Entity {
     this.set("seller", Value.fromBytes(value));
   }
 
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   get tokenId(): BigInt {
     let value = this.get("tokenId");
     return value!.toBigInt();

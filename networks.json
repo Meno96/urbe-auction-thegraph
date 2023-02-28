@@ -1,7 +1,14 @@
 {
   "goerli": {
     "UrbEAuction": {
+<<<<<<< HEAD
       "address": "0xdDfdac8eC08968B44fAF27054C366528EF601E61"
     }
   }
 }
+=======
+      "address": "0xD5C407789BA1c55eBd6A14A7A93DABc67eD337E2"
+    }
+  }
+}
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478

@@ -64,12 +64,15 @@
         "internalType": "uint256",
         "name": "price",
         "type": "uint256"
+<<<<<<< HEAD
       },
       {
         "indexed": false,
         "internalType": "bytes",
         "name": "auctionJson",
         "type": "bytes"
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
       }
     ],
     "name": "AuctionEnded",
@@ -112,12 +115,15 @@
       {
         "indexed": true,
         "internalType": "address",
+<<<<<<< HEAD
         "name": "seller",
         "type": "address"
       },
       {
         "indexed": true,
         "internalType": "address",
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
         "name": "nftAddress",
         "type": "address"
       },
@@ -137,12 +143,15 @@
       {
         "indexed": true,
         "internalType": "address",
+<<<<<<< HEAD
         "name": "seller",
         "type": "address"
       },
       {
         "indexed": true,
         "internalType": "address",
+=======
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
         "name": "nftAddress",
         "type": "address"
       },
@@ -175,6 +184,7 @@
     "type": "event"
   },
   {
+<<<<<<< HEAD
     "inputs": [
       { "internalType": "address", "name": "nftAddress", "type": "address" },
       { "internalType": "uint256", "name": "tokenId", "type": "uint256" },
@@ -183,6 +193,34 @@
     "name": "auctionEnd",
     "outputs": [],
     "stateMutability": "nonpayable",
+=======
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "nftAddress", "type": "address" },
+      { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
+    ],
+    "name": "auctionEnd",
+    "outputs": [],
+    "stateMutability": "payable",
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     "type": "function"
   },
   {
@@ -219,8 +257,12 @@
             "internalType": "address",
             "name": "highestBidder",
             "type": "address"
+<<<<<<< HEAD
           },
           { "internalType": "address", "name": "seller", "type": "address" }
+=======
+          }
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
         ],
         "internalType": "struct UrbEAuction.Listing",
         "name": "",
@@ -252,6 +294,16 @@
     "type": "function"
   },
   {
+<<<<<<< HEAD
+=======
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     "inputs": [
       { "internalType": "address", "name": "nftAddress", "type": "address" },
       { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
@@ -263,6 +315,25 @@
   },
   {
     "inputs": [],
+<<<<<<< HEAD
+=======
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+>>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     "name": "withdrawProceeds",
     "outputs": [],
     "stateMutability": "nonpayable",
