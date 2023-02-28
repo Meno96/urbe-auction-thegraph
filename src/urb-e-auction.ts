@@ -4,10 +4,6 @@ import {
   HighestBidIncreased as HighestBidIncreasedEvent,
   ItemCanceled as ItemCanceledEvent,
   ItemListed as ItemListedEvent,
-<<<<<<< HEAD
-=======
-  OwnershipTransferred as OwnershipTransferredEvent,
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 } from "../generated/UrbEAuction/UrbEAuction";
 import {
   AuctionEnded,
@@ -15,10 +11,6 @@ import {
   ItemCanceled,
   ItemListed,
   ActiveItem,
-<<<<<<< HEAD
-=======
-  OwnershipTransferred,
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 } from "../generated/schema";
 
 export function handleItemListed(event: ItemListedEvent): void {
@@ -62,12 +54,9 @@ export function handleItemListed(event: ItemListedEvent): void {
     "0x0000000000000000000000000000000000000000"
   );
 
-<<<<<<< HEAD
   itemListed.seller = event.params.seller;
   activeItem.seller = event.params.seller;
 
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   itemListed.save();
   activeItem.save();
 }
@@ -84,10 +73,7 @@ export function handleItemCanceled(event: ItemCanceledEvent): void {
       getIdFromEventParams(event.params.tokenId, event.params.nftAddress)
     );
   }
-<<<<<<< HEAD
   itemCanceled.seller = event.params.seller;
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   itemCanceled.nftAddress = event.params.nftAddress;
   itemCanceled.tokenId = event.params.tokenId;
   activeItem!.buyer = Address.fromString(
@@ -161,21 +147,6 @@ export function handleHighestBidIncreased(
   activeItem.save();
 }
 
-<<<<<<< HEAD
-=======
-export function handleOwnershipTransferred(
-  event: OwnershipTransferredEvent
-): void {
-  let entity = new OwnershipTransferred(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  );
-  entity.previousOwner = event.params.previousOwner;
-  entity.newOwner = event.params.newOwner;
-
-  entity.save();
-}
-
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 function getIdFromEventParams(tokenId: BigInt, nftAddress: Address): string {
   return tokenId.toHexString() + nftAddress.toHexString();
 }
