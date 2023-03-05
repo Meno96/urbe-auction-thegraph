@@ -6,11 +6,7 @@ import {
   beforeAll,
   afterAll
 } from "matchstick-as/assembly/index"
-<<<<<<< HEAD
 import { Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
-=======
-import { Address, BigInt } from "@graphprotocol/graph-ts"
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 import { AuctionEnded } from "../generated/schema"
 import { AuctionEnded as AuctionEndedEvent } from "../generated/UrbEAuction/UrbEAuction"
 import { handleAuctionEnded } from "../src/urb-e-auction"
@@ -28,21 +24,18 @@ describe("Describe entity assertions", () => {
       "0x0000000000000000000000000000000000000001"
     )
     let tokenId = BigInt.fromI32(234)
+    let seller = Address.fromString(
+      "0x0000000000000000000000000000000000000001"
+    )
     let price = BigInt.fromI32(234)
-<<<<<<< HEAD
     let auctionJson = Bytes.fromI32(1234567890)
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     let newAuctionEndedEvent = createAuctionEndedEvent(
       winner,
       nftAddress,
       tokenId,
-<<<<<<< HEAD
+      seller,
       price,
       auctionJson
-=======
-      price
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     )
     handleAuctionEnded(newAuctionEndedEvent)
   })
@@ -79,18 +72,21 @@ describe("Describe entity assertions", () => {
     assert.fieldEquals(
       "AuctionEnded",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
+      "seller",
+      "0x0000000000000000000000000000000000000001"
+    )
+    assert.fieldEquals(
+      "AuctionEnded",
+      "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
       "price",
       "234"
     )
-<<<<<<< HEAD
     assert.fieldEquals(
       "AuctionEnded",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
       "auctionJson",
       "1234567890"
     )
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 
     // More assert options:
     // https://thegraph.com/docs/en/developer/matchstick/#asserts

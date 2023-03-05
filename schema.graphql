@@ -2,16 +2,10 @@ type ActiveItem @entity {
   id: ID!
   buyer: Bytes! # address
   winner: Bytes! # address
-<<<<<<< HEAD
   seller: Bytes! # address
   nftAddress: Bytes! # address
   tokenId: BigInt!
   price: BigInt!
-=======
-  nftAddress: Bytes! # address
-  tokenId: BigInt!
-  price: BigInt
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   startTime: BigInt! # uint256
   endTime: BigInt! # uint256
 }
@@ -21,12 +15,9 @@ type AuctionEnded @entity {
   winner: Bytes! # address
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
-<<<<<<< HEAD
+  seller: Bytes! # address
   price: BigInt! # uint256
   auctionJson: Bytes! # bytes
-=======
-  price: BigInt # uint256
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 type HighestBidIncreased @entity {
@@ -34,19 +25,12 @@ type HighestBidIncreased @entity {
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
   bidder: Bytes! # address
-<<<<<<< HEAD
   price: BigInt! # uint256
-=======
-  price: BigInt # uint256
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 type ItemCanceled @entity {
   id: ID!
-<<<<<<< HEAD
   seller: Bytes! # address
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   nftAddress: Bytes! # address
   tokenId: BigInt! # uint256
 }
@@ -54,10 +38,7 @@ type ItemCanceled @entity {
 type ItemListed @entity {
   id: ID!
   nftAddress: Bytes! # address
-<<<<<<< HEAD
   seller: Bytes! # address
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   tokenId: BigInt! # uint256
   price: BigInt
   endTime: BigInt! # uint256

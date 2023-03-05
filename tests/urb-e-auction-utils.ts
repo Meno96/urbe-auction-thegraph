@@ -1,31 +1,19 @@
 import { newMockEvent } from "matchstick-as"
-<<<<<<< HEAD
 import { ethereum, Address, BigInt, Bytes } from "@graphprotocol/graph-ts"
-=======
-import { ethereum, Address, BigInt } from "@graphprotocol/graph-ts"
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 import {
   AuctionEnded,
   HighestBidIncreased,
   ItemCanceled,
-<<<<<<< HEAD
   ItemListed
-=======
-  ItemListed,
-  OwnershipTransferred
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 } from "../generated/UrbEAuction/UrbEAuction"
 
 export function createAuctionEndedEvent(
   winner: Address,
   nftAddress: Address,
   tokenId: BigInt,
-<<<<<<< HEAD
+  seller: Address,
   price: BigInt,
   auctionJson: Bytes
-=======
-  price: BigInt
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 ): AuctionEnded {
   let auctionEndedEvent = changetype<AuctionEnded>(newMockEvent())
 
@@ -47,17 +35,17 @@ export function createAuctionEndedEvent(
     )
   )
   auctionEndedEvent.parameters.push(
+    new ethereum.EventParam("seller", ethereum.Value.fromAddress(seller))
+  )
+  auctionEndedEvent.parameters.push(
     new ethereum.EventParam("price", ethereum.Value.fromUnsignedBigInt(price))
   )
-<<<<<<< HEAD
   auctionEndedEvent.parameters.push(
     new ethereum.EventParam(
       "auctionJson",
       ethereum.Value.fromBytes(auctionJson)
     )
   )
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 
   return auctionEndedEvent
 }
@@ -95,10 +83,7 @@ export function createHighestBidIncreasedEvent(
 }
 
 export function createItemCanceledEvent(
-<<<<<<< HEAD
   seller: Address,
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   nftAddress: Address,
   tokenId: BigInt
 ): ItemCanceled {
@@ -107,12 +92,9 @@ export function createItemCanceledEvent(
   itemCanceledEvent.parameters = new Array()
 
   itemCanceledEvent.parameters.push(
-<<<<<<< HEAD
     new ethereum.EventParam("seller", ethereum.Value.fromAddress(seller))
   )
   itemCanceledEvent.parameters.push(
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     new ethereum.EventParam(
       "nftAddress",
       ethereum.Value.fromAddress(nftAddress)
@@ -129,10 +111,7 @@ export function createItemCanceledEvent(
 }
 
 export function createItemListedEvent(
-<<<<<<< HEAD
   seller: Address,
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   nftAddress: Address,
   tokenId: BigInt,
   price: BigInt,
@@ -144,12 +123,9 @@ export function createItemListedEvent(
   itemListedEvent.parameters = new Array()
 
   itemListedEvent.parameters.push(
-<<<<<<< HEAD
     new ethereum.EventParam("seller", ethereum.Value.fromAddress(seller))
   )
   itemListedEvent.parameters.push(
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
     new ethereum.EventParam(
       "nftAddress",
       ethereum.Value.fromAddress(nftAddress)
@@ -179,29 +155,3 @@ export function createItemListedEvent(
 
   return itemListedEvent
 }
-<<<<<<< HEAD
-=======
-
-export function createOwnershipTransferredEvent(
-  previousOwner: Address,
-  newOwner: Address
-): OwnershipTransferred {
-  let ownershipTransferredEvent = changetype<OwnershipTransferred>(
-    newMockEvent()
-  )
-
-  ownershipTransferredEvent.parameters = new Array()
-
-  ownershipTransferredEvent.parameters.push(
-    new ethereum.EventParam(
-      "previousOwner",
-      ethereum.Value.fromAddress(previousOwner)
-    )
-  )
-  ownershipTransferredEvent.parameters.push(
-    new ethereum.EventParam("newOwner", ethereum.Value.fromAddress(newOwner))
-  )
-
-  return ownershipTransferredEvent
-}
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478

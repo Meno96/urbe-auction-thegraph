@@ -102,6 +102,7 @@ export function handleAuctionEnded(event: AuctionEndedEvent): void {
   auctionEnded.winner = event.params.winner;
   auctionEnded.nftAddress = event.params.nftAddress;
   auctionEnded.tokenId = event.params.tokenId;
+  auctionEnded.seller = event.params.seller;
   auctionEnded.price = event.params.price;
   auctionEnded.auctionJson = event.params.auctionJson;
 

@@ -35,16 +35,17 @@ export class AuctionEnded__Params {
     return this._event.parameters[2].value.toBigInt();
   }
 
-  get price(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
+  get seller(): Address {
+    return this._event.parameters[3].value.toAddress();
   }
-<<<<<<< HEAD
+
+  get price(): BigInt {
+    return this._event.parameters[4].value.toBigInt();
+  }
 
   get auctionJson(): Bytes {
-    return this._event.parameters[4].value.toBytes();
+    return this._event.parameters[5].value.toBytes();
   }
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 export class HighestBidIncreased extends ethereum.Event {
@@ -90,7 +91,6 @@ export class ItemCanceled__Params {
     this._event = event;
   }
 
-<<<<<<< HEAD
   get seller(): Address {
     return this._event.parameters[0].value.toAddress();
   }
@@ -101,14 +101,6 @@ export class ItemCanceled__Params {
 
   get tokenId(): BigInt {
     return this._event.parameters[2].value.toBigInt();
-=======
-  get nftAddress(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   }
 }
 
@@ -125,7 +117,6 @@ export class ItemListed__Params {
     this._event = event;
   }
 
-<<<<<<< HEAD
   get seller(): Address {
     return this._event.parameters[0].value.toAddress();
   }
@@ -148,48 +139,6 @@ export class ItemListed__Params {
 
   get startTime(): BigInt {
     return this._event.parameters[5].value.toBigInt();
-=======
-  get nftAddress(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get tokenId(): BigInt {
-    return this._event.parameters[1].value.toBigInt();
-  }
-
-  get price(): BigInt {
-    return this._event.parameters[2].value.toBigInt();
-  }
-
-  get endTime(): BigInt {
-    return this._event.parameters[3].value.toBigInt();
-  }
-
-  get startTime(): BigInt {
-    return this._event.parameters[4].value.toBigInt();
-  }
-}
-
-export class OwnershipTransferred extends ethereum.Event {
-  get params(): OwnershipTransferred__Params {
-    return new OwnershipTransferred__Params(this);
-  }
-}
-
-export class OwnershipTransferred__Params {
-  _event: OwnershipTransferred;
-
-  constructor(event: OwnershipTransferred) {
-    this._event = event;
-  }
-
-  get previousOwner(): Address {
-    return this._event.parameters[0].value.toAddress();
-  }
-
-  get newOwner(): Address {
-    return this._event.parameters[1].value.toAddress();
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
   }
 }
 
@@ -213,13 +162,10 @@ export class UrbEAuction__getListingResultValue0Struct extends ethereum.Tuple {
   get highestBidder(): Address {
     return this[4].toAddress();
   }
-<<<<<<< HEAD
 
   get seller(): Address {
     return this[5].toAddress();
   }
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 export class UrbEAuction extends ethereum.SmartContract {
@@ -248,11 +194,7 @@ export class UrbEAuction extends ethereum.SmartContract {
   ): UrbEAuction__getListingResultValue0Struct {
     let result = super.call(
       "getListing",
-<<<<<<< HEAD
       "getListing(address,uint256):((uint256,uint256,uint256,bool,address,address))",
-=======
-      "getListing(address,uint256):((uint256,uint256,uint256,bool,address))",
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
       [
         ethereum.Value.fromAddress(nftAddress),
         ethereum.Value.fromUnsignedBigInt(tokenId)
@@ -270,11 +212,7 @@ export class UrbEAuction extends ethereum.SmartContract {
   ): ethereum.CallResult<UrbEAuction__getListingResultValue0Struct> {
     let result = super.tryCall(
       "getListing",
-<<<<<<< HEAD
       "getListing(address,uint256):((uint256,uint256,uint256,bool,address,address))",
-=======
-      "getListing(address,uint256):((uint256,uint256,uint256,bool,address))",
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
       [
         ethereum.Value.fromAddress(nftAddress),
         ethereum.Value.fromUnsignedBigInt(tokenId)
@@ -309,24 +247,6 @@ export class UrbEAuction extends ethereum.SmartContract {
     let value = result.value;
     return ethereum.CallResult.fromValue(value[0].toBigInt());
   }
-<<<<<<< HEAD
-=======
-
-  owner(): Address {
-    let result = super.call("owner", "owner():(address)", []);
-
-    return result[0].toAddress();
-  }
-
-  try_owner(): ethereum.CallResult<Address> {
-    let result = super.tryCall("owner", "owner():(address)", []);
-    if (result.reverted) {
-      return new ethereum.CallResult();
-    }
-    let value = result.value;
-    return ethereum.CallResult.fromValue(value[0].toAddress());
-  }
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 export class ConstructorCall extends ethereum.Call {
@@ -379,13 +299,10 @@ export class AuctionEndCall__Inputs {
   get tokenId(): BigInt {
     return this._call.inputValues[1].value.toBigInt();
   }
-<<<<<<< HEAD
 
   get auctionJson(): Bytes {
     return this._call.inputValues[2].value.toBytes();
   }
-=======
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 }
 
 export class AuctionEndCall__Outputs {
@@ -506,65 +423,6 @@ export class PlaceBidCall__Outputs {
   }
 }
 
-<<<<<<< HEAD
-=======
-export class RenounceOwnershipCall extends ethereum.Call {
-  get inputs(): RenounceOwnershipCall__Inputs {
-    return new RenounceOwnershipCall__Inputs(this);
-  }
-
-  get outputs(): RenounceOwnershipCall__Outputs {
-    return new RenounceOwnershipCall__Outputs(this);
-  }
-}
-
-export class RenounceOwnershipCall__Inputs {
-  _call: RenounceOwnershipCall;
-
-  constructor(call: RenounceOwnershipCall) {
-    this._call = call;
-  }
-}
-
-export class RenounceOwnershipCall__Outputs {
-  _call: RenounceOwnershipCall;
-
-  constructor(call: RenounceOwnershipCall) {
-    this._call = call;
-  }
-}
-
-export class TransferOwnershipCall extends ethereum.Call {
-  get inputs(): TransferOwnershipCall__Inputs {
-    return new TransferOwnershipCall__Inputs(this);
-  }
-
-  get outputs(): TransferOwnershipCall__Outputs {
-    return new TransferOwnershipCall__Outputs(this);
-  }
-}
-
-export class TransferOwnershipCall__Inputs {
-  _call: TransferOwnershipCall;
-
-  constructor(call: TransferOwnershipCall) {
-    this._call = call;
-  }
-
-  get newOwner(): Address {
-    return this._call.inputValues[0].value.toAddress();
-  }
-}
-
-export class TransferOwnershipCall__Outputs {
-  _call: TransferOwnershipCall;
-
-  constructor(call: TransferOwnershipCall) {
-    this._call = call;
-  }
-}
-
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
 export class WithdrawProceedsCall extends ethereum.Call {
   get inputs(): WithdrawProceedsCall__Inputs {
     return new WithdrawProceedsCall__Inputs(this);

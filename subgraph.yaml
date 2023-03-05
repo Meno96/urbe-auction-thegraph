@@ -6,15 +6,9 @@ dataSources:
     name: UrbEAuction
     network: goerli
     source:
-<<<<<<< HEAD
-      address: "0xdDfdac8eC08968B44fAF27054C366528EF601E61"
+      address: "0x94360757b39682E2cE3bB9AD211d629A43bFae35"
       abi: UrbEAuction
-      startBlock: 8569247
-=======
-      address: "0xD5C407789BA1c55eBd6A14A7A93DABc67eD337E2"
-      abi: UrbEAuction
-      startBlock: 8535144
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
+      startBlock: 8571673
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
@@ -24,16 +18,11 @@ dataSources:
         - HighestBidIncreased
         - ItemCanceled
         - ItemListed
-<<<<<<< HEAD
-=======
-        - OwnershipTransferred
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
       abis:
         - name: UrbEAuction
           file: ./abis/UrbEAuction.json
       eventHandlers:
-<<<<<<< HEAD
-        - event: AuctionEnded(indexed address,indexed address,indexed uint256,uint256,bytes)
+        - event: AuctionEnded(indexed address,indexed address,indexed uint256,address,uint256,bytes)
           handler: handleAuctionEnded
         - event: HighestBidIncreased(indexed address,indexed address,indexed uint256,uint256)
           handler: handleHighestBidIncreased
@@ -41,16 +30,4 @@ dataSources:
           handler: handleItemCanceled
         - event: ItemListed(indexed address,indexed address,indexed uint256,uint256,uint256,uint256)
           handler: handleItemListed
-=======
-        - event: AuctionEnded(indexed address,indexed address,indexed uint256,uint256)
-          handler: handleAuctionEnded
-        - event: HighestBidIncreased(indexed address,indexed address,indexed uint256,uint256)
-          handler: handleHighestBidIncreased
-        - event: ItemCanceled(indexed address,indexed uint256)
-          handler: handleItemCanceled
-        - event: ItemListed(indexed address,indexed uint256,uint256,uint256,uint256)
-          handler: handleItemListed
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
->>>>>>> bfefa070c85f355711cc577211bda25ce2a60478
       file: ./src/urb-e-auction.ts
