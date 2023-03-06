@@ -11,7 +11,11 @@
 
 <br/>
 
-This project is a charity auction for UrbE, a micromobility company and this repo is the TheGraph part.
+This project is a charity auction for UrbE, a micromobility company. The repo in question is the part of the project that uses The Graph, a decentralized protocol for querying data from blockchain networks.
+
+In this project, The Graph is used to query data from the blockchain network. This data includes information about the current highest bidder, the current highest bid amount, and the time remaining in the auction. This information is then displayed on the auction website to allow bidders to make informed decisions.
+
+Using The Graph in this way allows for a more efficient and streamlined way of accessing blockchain data, as well as providing a more reliable source of data than relying on centralized servers.
 
 <hr/>
  
